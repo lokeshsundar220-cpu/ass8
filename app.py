@@ -1,18 +1,18 @@
-import streamlit as st
+# Web Developer Mock Interviewer using Groq API
 
-# Title of the app
-st.title("Mock Interviewer")
+This application allows users to practice their web development skills through mock interviews conducted with the Groq API.
 
-# Instructions
-st.write("Welcome to the Mock Interviewer. Please fill in your details below.")
+## Features
+- Simulates real-world interview scenarios.
+- Provides instant feedback on answers.
+- Tracks progress over time.
 
-# User input fields
-name = st.text_input("Name:")
-email = st.text_input("Email:")
+## Getting Started
+- Install the necessary dependencies using `pip install -r requirements.txt`
+- Run the application with `python app.py`
 
-if st.button("Start Interview"):
-    if name and email:
-        st.success(f"Starting the interview for {name}...")
-        # Here you could integrate your interview questions and logic
-    else:
-        st.error("Please enter your name and email to start the interview.")
+## Usage
+- Start the app and follow the on-screen instructions to begin your mock interview.
+
+## Contribution
+Contributions are welcome! Please open an issue or submit a pull request.
