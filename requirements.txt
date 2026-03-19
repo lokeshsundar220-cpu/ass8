@@ -1,0 +1,7 @@
+# Project Dependencies
+
+# List of required packages
+# Example:
+# requests
+# numpy
+# pandas
