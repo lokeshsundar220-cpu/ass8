@@ -1,23 +1,28 @@
 # Interviewer.py
 
-# CrewAI agents and logic for interview questions and feedback.
+import requests
 
-class Interviewer:
-    def __init__(self):
-        self.questions = []
-        self.feedback = ''
+class CrewAI:
+    def __init__(self, api_key):
+        self.api_key = api_key
 
-    def add_question(self, question):
-        self.questions.append(question)
+    def get_web_dev_questions(self):
+        url = 'https://api.groq.com/getWebDevQuestions'
+        headers = {'Authorization': f'Bearer {self.api_key}' }
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return response.json()['questions']
+        return []
 
-    def conduct_interview(self):
-        for question in self.questions:
-            answer = input(question)
-            self.provide_feedback(answer)
+    def get_feedback(self, answers):
+        url = 'https://api.groq.com/getFeedback'
+        headers = {'Authorization': f'Bearer {self.api_key}', 'Content-Type': 'application/json'}
+        response = requests.post(url, json={'answers': answers}, headers=headers)
+        if response.status_code == 200:
+            return response.json()['feedback']
+        return "No feedback available."
 
-    def provide_feedback(self, answer):
-        # Logic for providing feedback based on the answer
-        self.feedback += f'Feedback for answer: {answer}\n'
-
-    def show_feedback(self):
-        print(self.feedback)
+# Example usage:
+# crew_ai = CrewAI(api_key='your_api_key_here')
+# questions = crew_ai.get_web_dev_questions()
+# feedback = crew_ai.get_feedback(['answer1', 'answer2'])
