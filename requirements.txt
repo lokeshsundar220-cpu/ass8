@@ -1,7 +1,3 @@
-# Project Dependencies
-
-# List of required packages
-# Example:
-# requests
-# numpy
-# pandas
+streamlit
+groq
+python-dotenv
